@@ -1,0 +1,5 @@
+---
+applications:
+ - name: fases-python
+   random-route: false
+   memory: 128M
