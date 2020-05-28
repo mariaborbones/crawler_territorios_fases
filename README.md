@@ -18,7 +18,7 @@ Clona el repositorio y cambia al directorio donde se localiza la aplicación de 
 
   ```
 git clone https://github.com/mariaborbones/crawler_territorios_fases
-cd fases-desescalada
+cd crawler_territorios_fases
   ```
 
 ## 2. Ejecuta la aplicación localmente
@@ -74,7 +74,7 @@ Haz login en tu cuenta de IBM Cloud
 bx login
   ```
 
-Desde tu repositorio de  *fases-desescalada* haz push de la aplicación a IBM Cloud
+Desde tu repositorio de  *crawler_territorios_fases* haz push de la aplicación a IBM Cloud
   ```
 bx app push
   ```
