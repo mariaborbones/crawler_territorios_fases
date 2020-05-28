@@ -92,7 +92,7 @@ def get_info():
     'provincias': ''
     }]
     ,
-    'provincia': False}
+    'provincia': 'false'}
 
     #Leemos las provincias de fase 1
 
@@ -188,8 +188,9 @@ def fases_desescalada():
 @app.route('/fases_provincia', methods=['POST'])
 def fases_provincia():
     provincias_fase = get_info()
-    params = request.form
-    city = params['provincia'].lower()
+    j = request.json
+    print("json= "+str(j))
+    city = j['provincia'].lower()
     fase = 0
     #print(params['provincia'])
     for p in provincias_fase['fases']:
@@ -199,7 +200,7 @@ def fases_provincia():
 
 
     if(fase > 0):
-        return jsonify({'provincia':True,'fase':fase})
+        return jsonify({'provincia':'true','fase':fase})
     else:
         return jsonify(provincias_fase)
 
