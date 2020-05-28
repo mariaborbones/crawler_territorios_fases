@@ -80,3 +80,11 @@ bx app push
   ```
 
 Puede tardar unos minutos. Si quieres ver los logs puedes ejecutar `bx logs <Your-App-Name> --recent`
+
+## 5. Documentación de la API: Swagger
+
+Se ha incluido un portal de swagger con la documentación de los dos endpoints.
+
+/fases: método POST que devuelve un JSON con las fases y zonas asociadas
+
+/fases_provincia: método POST al que enviándole el nombre de la provincia en el cuerpo de la petición, nos devuelve la fase en la que se encuentra.
