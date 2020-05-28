@@ -40,26 +40,26 @@ python hello.py
 
 ## 3. Prepara la aplicación para desplegarla
 
-To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. One is provided for you with the sample. Take a moment to look at it.
+Para desplegarla en IBM Cloud, es útil añadir un fichero manifest.yml. Ya se incluye uno en este repositorio como ejemplo.
 
-The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. In this manifest.yml **random-route: true** generates a random route for your app to prevent your route from colliding with others.  You can replace **random-route: true** with **host: myChosenHostName**, supplying a host name of your choice. [Learn more...](https://console.bluemix.net/docs/manageapps/depapps.html#appmanifest)
+El manifest.yml incluye información básica de tu aplicación, como el nombre, cuanta memoria alojar para cada instancia y la ruta. En el manifest.yml **random-route: true** genera una ruta aleatoria para asegurarnos que no colisiona con otras aplicaciones existentes en IBM Cloud.  Puedes reemplazar **random-route: true** con **host: miNombreDeHost**, sustituyendo el nombre del Host por el que tu quieras. [Más info en...](https://console.bluemix.net/docs/manageapps/depapps.html#appmanifest)
  ```
  applications:
- - name: GetStartedPython
+ - name: APIFases
    random-route: true
    memory: 128M
  ```
 
-## 4. Deploy the app
+## 4. Despliegue de la aplicación
 
-You can use the Cloud Foundry CLI to deploy apps.
+Puedes usar Cloud Foundry para desplegar la aplicación
 
-Choose your API endpoint
+Elige tu endpoint
    ```
-cf api <API-endpoint>
+bx api <API-endpoint>
    ```
 
-Replace the *API-endpoint* in the command with an API endpoint from the following list.
+Reemplaza *API-endpoint* en el comando con el endpoint elegido de la siguiente lista .
 
 |URL                             |Region          |
 |:-------------------------------|:---------------|
@@ -68,21 +68,15 @@ Replace the *API-endpoint* in the command with an API endpoint from the followin
 | https://api.eu-gb.bluemix.net  | United Kingdom |
 | https://api.au-syd.bluemix.net | Sydney         |
 
-Login to your IBM Cloud account
+Haz login en tu cuenta de IBM Cloud
 
   ```
-cf login
+bx login
   ```
 
-From within the *get-started-python* directory push your app to IBM Cloud
+Desde tu repositorio de  *fases-desescalada* haz push de la aplicación a IBM Cloud
   ```
-cf push
+bx app push
   ```
 
-This can take a minute. If there is an error in the deployment process you can use the command `cf logs <Your-App-Name> --recent` to troubleshoot.
-
-When deployment completes you should see a message indicating that your app is running.  View your app at the URL listed in the output of the push command.  You can also issue the
-  ```
-cf apps
-  ```
-  command to view your apps status and see the URL.
+Puede tardar unos minutos. Si quieres ver los logs puedes ejecutar `bx logs <Your-App-Name> --recent`
