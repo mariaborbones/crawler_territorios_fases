@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Desescalada fases API REST",
+    "version": "1.0.0",
+    "title": "Desescalada-fases-python-REST",
+    "contact": {
+      "twitter": "@mariaborbones"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Fases desescalada",
+      "description": "API que devuelve las fases de la desescalada y las zonas asociadas"
+    }
+  ],
+  "paths": {
+    "/fases": {
+      "post": {
+        "tags": [
+          "Fases desescaladas"
+        ],
+        "summary": "Devuelve en formato JSON las fases de la desescalada y las zonas asociadas",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fases_provincia": {
+      "post": {
+        "tags": [
+          "Fase asociada a una provincia específica"
+        ],
+        "summary": "Obtener la fase de una zona dado el nombre de la provincia",
+        "requestBody": {
+          "description": "Provincia ",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/provinciaPostBody"
+              }
+            }
+          },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed.request not found."
+          }
+        }
+      }
+    }
+  },
+  },
+  "components": {
+    "schemas": {
+      "provinciaPostBody": {
+        "type": "object",
+        "properties": {
+          "provincia": {
+            "type": "string",
+            "format": "string"
+          },
+        }
+      }
+    }
+  }
+}

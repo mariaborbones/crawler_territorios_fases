@@ -6,12 +6,31 @@ import requests
 import json
 import os
 from bs4 import BeautifulSoup
+from flask_swagger_ui import get_swaggerui_blueprint
+
+
+
 
 # encoding: utf-8
 
 app = Flask(__name__, static_url_path='')
 
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
+
+
+### swagger specific ###
+SWAGGER_URL = '/swagger'
+API_URL = '/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Desescalada-fases-python-REST"
+    }
+)
+
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+### end swagger specific ###
 
 
 # On IBM Cloud Cloud Foundry, get the port number from the environment variable PORT
